@@ -13,5 +13,6 @@ public record TaskResponse(
         LocalDateTime createdAt,
         LocalDateTime updatedAt,
         String assignedUserName,   // just the name, not the whole User object
-        String assignedUserEmail
+        String assignedUserEmail,
+        String projectName
 ) {}

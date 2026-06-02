@@ -16,7 +16,8 @@ public class TaskMapper {
                 task.getCreatedAt(),
                 task.getUpdatedAt(),
                 task.getAssignedUser() != null ? task.getAssignedUser().getName() : null,
-                task.getAssignedUser() != null ? task.getAssignedUser().getEmail() : null
+                task.getAssignedUser() != null ? task.getAssignedUser().getEmail() : null,
+                task.getProject() != null ? task.getProject().getName() : null
         );
     }
 }

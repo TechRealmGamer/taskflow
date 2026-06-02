@@ -1,5 +1,6 @@
 package com.prince.taskflow.task;
 
+import com.prince.taskflow.project.Project;
 import com.prince.taskflow.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -39,6 +40,11 @@ public class Task {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assigned_user_id")
     private User assignedUser;
+
+    // Add this field inside the Task class
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id")
+    private Project project;
 
     @PrePersist    // runs automatically before INSERT
     protected void onCreate() {

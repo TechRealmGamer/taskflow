@@ -8,7 +8,8 @@ public record TaskRequest(
         String description,
         TaskStatus status,
         TaskPriority priority,
-        Long assignedUserId
+        Long assignedUserId,
+        Long projectId
 ) {
     // Java records are immutable DTOs — no boilerplate needed
     // Use the full enum path or add imports

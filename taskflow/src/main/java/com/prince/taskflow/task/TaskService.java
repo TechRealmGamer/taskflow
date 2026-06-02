@@ -1,5 +1,7 @@
 package com.prince.taskflow.task;
 
+import com.prince.taskflow.project.Project;
+import com.prince.taskflow.project.ProjectRepository;
 import com.prince.taskflow.task.dto.TaskRequest;
 import com.prince.taskflow.task.dto.TaskResponse;
 import com.prince.taskflow.user.User;
@@ -14,6 +16,7 @@ public class TaskService {
 
     private final TaskRepository taskRepository;
     private final UserRepository userRepository;
+    private final ProjectRepository projectRepository;
     private final TaskMapper taskMapper;
 
     // CREATE
@@ -28,6 +31,12 @@ public class TaskService {
             User user = userRepository.findById(request.assignedUserId())
                     .orElseThrow(() -> new RuntimeException("User not found"));
             task.setAssignedUser(user);
+        }
+
+        if (request.projectId() != null) {
+            Project project = projectRepository.findById(request.projectId())
+                    .orElseThrow(() -> new RuntimeException("Project not found"));
+            task.setProject(project);
         }
 
         return taskMapper.toResponse(taskRepository.save(task));
